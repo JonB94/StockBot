@@ -121,16 +121,16 @@ def main():
             sys.exit(0)
         # extracts data from API
         else:
-            with consoletimer('RETRIEVING %s DATA' % sf):
+            with consoletimer('RETRIEVING \'%s\' DATA' % sf.upper()):
                 data[sf] = requests.get(url = '%s/%s' % (API_URL, SUBFIELDS_IRL_DICT[field][sf])).json()
     
     # outputs JSON to file
-    with consoletimer('WRITING TO OUTPUT FILE "%s"' % filename):
+    with consoletimer('WRITING TO OUTPUT FILE \'%s\'' % filename):
         f = open(filename, "w+")
         f.write(json.dumps(data, indent=4))
 
 
 # execute
 if __name__ == '__main__':
-    with consoletimer('EXECUTE SCRIPT'):
+    with consoletimer('EXECUTING SCRIPT'):
         main()
