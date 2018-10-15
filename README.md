@@ -31,7 +31,7 @@ python api_requests.py iexmarket --subfield tops last hist deep
 
 ## References
 **Fields and subfields**
--'stocks'
+- 'stocks'
     - 'batch-requests'
     - 'book'
     - 'chart'
