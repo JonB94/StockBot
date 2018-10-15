@@ -95,4 +95,4 @@ python api_requests.py marketdata.json -f iexmarket -s tops last hist deep
     - 'historical-summary'
     - 'historical-daily'
 - 'markets'
-    = 'market'
+    - 'market'
