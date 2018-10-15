@@ -6,12 +6,12 @@
 ```sh
 python -m pip install -r requirements.txt
 ```
-- Argparse: python -m pip install argparse
-- Requests: python -m pip install requests
+- **Argparse**: python -m pip install argparse
+- **Requests**: python -m pip install requests
 
 
 ## Getting Started
-The api_requests.py script accepts the following input arguments:
+The **api_requests.py** script accepts the following input arguments:
 - **field**: (one input) The field of information you want to capture. Options are: Stocks ("stocks"), Reference Data ("reference"), IEX Market Data ("iexmarket"), IEX Stats ("iexstats"), Markets ("markets")
 - **subfield**: (one or more inputs) The subfield of information within the field. See the References section below to know which subfield inputs are acceptable.
 
@@ -30,7 +30,7 @@ python api_requests.py iexmarket --subfield tops last hist deep
 
 
 ## References
-**Fields and subfields**
+**Fields and subfields:**
 - 'stocks'
     - 'batch-requests'
     - 'book'

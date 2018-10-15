@@ -101,30 +101,27 @@ def main():
     subfields = args.subfield
     data = {}
 
-    # verifies that inputs are valid
+    # verifies that field inputs are valid
     if field not in SUBFIELDS_IRL_DICT:
         print('Error: invalid field')
         sys.exit(0)
     
+    # verifies that subfield inputs are valid
     for sf in subfields:
         if not sf in SUBFIELDS_IRL_DICT[field]:
             print('Error: invalid subfield.')
             sys.exit(0)
     
     # extracts data from API
-    with consoletimer('RETRIEVING DATA FROM FIELDS %s' % subfields):
-        for sub in subfields:
-            data[sub] = get_request(sub, SUBFIELDS_IRL_DICT[field][sub])
+    for sf in subfields:
+        with consoletimer('RETRIEVING %s DATA' % sf):
+            data[sf] = requests.get(url = '%s/%s' % (API_URL, SUBFIELDS_IRL_DICT[field][sf])).json()
     
+    # outputs JSON to file
     with consoletimer('WRITING TO OUTPUT FILE "%s"' % FILENAME):
         f = open(FILENAME, "w")
         f.write(json.dumps(data, indent=4))
 
-
-def get_request(field, irl):
-    with consoletimer("RETRIEVING %s" % field):
-        r = requests.get(url = '%s/%s' % (API_URL, irl))
-        return r.json()
 
 # execute
 if __name__ == '__main__':
