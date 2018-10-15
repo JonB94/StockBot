@@ -12,20 +12,22 @@ python -m pip install -r requirements.txt
 
 ## Getting Started
 The **api_requests.py** script accepts the following input arguments:
-- **field**: (one input) The field of information you want to capture. Options are: Stocks ("stocks"), Reference Data ("reference"), IEX Market Data ("iexmarket"), IEX Stats ("iexstats"), Markets ("markets")
-- **subfield**: (one or more inputs) The subfield of information within the field. See the References section below to know which subfield inputs are acceptable.
+- **output_file**: (one input) The output file to push the extracted data to.
+- **-f** or **--field**: (one input) The field of information you want to capture. Options are: Stocks ("stocks"), Reference Data ("reference"), IEX Market Data ("iexmarket"), IEX Stats ("iexstats"), Markets ("markets")
+- **-s** or **--subfield**: (one or more inputs) The subfield of information within the field. See the References section below to know which subfield inputs are acceptable.
 
 To execute the program, run the following line in your terminal:
 ```sh
-python api_requests.py [STRING: field] --subfield [STRING: subfield]
+python api_requests.py [STRING: output_file]? --field [STRING: field] --subfield [STRING: subfield]+
 ```
 
 Examples:
 ```sh
-python api_requests.py stocks --subfield batch-requests
-python api_requests.py stocks --subfield dividends earnings price
-python api_requests.py reference --subfield iex-corporate-actions
-python api_requests.py iexmarket --subfield tops last hist deep
+python api_requests.py batchrequests.json --field stocks --subfield batch-requests
+python api_requests.py batchrequests.json -f stocks -s batch-requests
+python api_requests.py --field stocks --subfield dividends earnings price
+python api_requests.py -f reference --subfield iex-corporate-actions
+python api_requests.py marketdata.json -f iexmarket -s tops last hist deep
 ```
 
 

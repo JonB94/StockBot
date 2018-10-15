@@ -9,7 +9,7 @@ from performance.consoletimer import consoletimer
 # constants
 VERSION = 1.0
 API_URL = 'https://api.iextrading.com/%s' % VERSION
-FILENAME = 'data.json'
+FILENAME_DEFAULT = 'data.json'
 
 
 # dictionary of IRLs for each subfield
@@ -88,38 +88,45 @@ SUBFIELDS_IRL_DICT = {                                                          
 
 # reading inputs
 parser = argparse.ArgumentParser()
-parser.add_argument('field', help = 'The field of information you want to capture. Options are: \
+parser.add_argument('output_file', type=str, default=FILENAME_DEFAULT, help= 'The output file to push the extracted data to.', nargs='?')
+parser.add_argument('-f', '--field', type=str, help = 'The field of information you want to capture. Options are: \
                     Stocks ("stocks"), Reference Data ("reference"), IEX Market Data ("iexmarket"), \
                     IEX Stats ("iexstats"), Markets ("markets")')
-parser.add_argument('-s', '--subfield', help = 'The subfield of the primary field.', nargs='+')
+parser.add_argument('-s', '--subfields', type=str, help = 'The subfield of the primary field. Please see README.md for all available subfields', nargs='+')
 
 
 # main
 def main():
     args = parser.parse_args()
+    filename = args.output_file
     field = args.field
-    subfields = args.subfield
+    subfields = args.subfields
     data = {}
+
+    # verifies valid output file name
+    if not filename.endswith('.json'):
+        print('Error: invalid output file. Must be a .json')
+        sys.exit(0)
 
     # verifies that field inputs are valid
     if field not in SUBFIELDS_IRL_DICT:
-        print('Error: invalid field')
+        print('Error: invalid field "%s"' % field)
         sys.exit(0)
-    
-    # verifies that subfield inputs are valid
+
+    # iterates through subfields
     for sf in subfields:
-        if not sf in SUBFIELDS_IRL_DICT[field]:
-            print('Error: invalid subfield.')
+        # verifies that subfield inputs are valid
+        if sf not in SUBFIELDS_IRL_DICT[field]:
+            print('Error: invalid subfield "%s".' % sf)
             sys.exit(0)
-    
-    # extracts data from API
-    for sf in subfields:
-        with consoletimer('RETRIEVING %s DATA' % sf):
-            data[sf] = requests.get(url = '%s/%s' % (API_URL, SUBFIELDS_IRL_DICT[field][sf])).json()
+        # extracts data from API
+        else:
+            with consoletimer('RETRIEVING %s DATA' % sf):
+                data[sf] = requests.get(url = '%s/%s' % (API_URL, SUBFIELDS_IRL_DICT[field][sf])).json()
     
     # outputs JSON to file
-    with consoletimer('WRITING TO OUTPUT FILE "%s"' % FILENAME):
-        f = open(FILENAME, "w")
+    with consoletimer('WRITING TO OUTPUT FILE "%s"' % filename):
+        f = open(filename, "w+")
         f.write(json.dumps(data, indent=4))
 
 
