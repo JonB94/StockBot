@@ -1,19 +1,17 @@
-# libraries
 import argparse
 import json
 import requests
 import sys
-from performance.consoletimer import consoletimer
 
+from utils import ConsoleTimer as consoletimer
 
-# constants
+# Constants
 VERSION = 1.0
-API_URL = 'https://api.iextrading.com/%s' % VERSION
+API_URL = f'https://api.iextrading.com/{VERSION}'
 FILENAME_DEFAULT = 'data.json'
 
-
-# dictionary of IRLs for each subfield
-# documentation: https://iextrading.com/developer/docs/
+# Dictionary of IRLs for each subfield
+# Documentation: https://iextrading.com/developer/docs/
 SUBFIELDS_IRL_DICT = {                                                                          # FLAGGED '1' IF IRL HAS ADDITIONAL ARGUMENTS
     'stocks': {
         'batch-requests': '/stock/aapl/batch?types=quote,news,chart&range=1m&last=1',           # 1
@@ -85,8 +83,7 @@ SUBFIELDS_IRL_DICT = {                                                          
     }
 }
 
-
-# reading inputs
+# Read user inputs.
 parser = argparse.ArgumentParser()
 parser.add_argument('output_file', type=str, default=FILENAME_DEFAULT, help= 'The output file to push the extracted data to.', nargs='?')
 parser.add_argument('-f', '--field', type=str, help = 'The field of information you want to capture. Options are: \
@@ -94,43 +91,43 @@ parser.add_argument('-f', '--field', type=str, help = 'The field of information 
                     IEX Stats ("iexstats"), Markets ("markets")')
 parser.add_argument('-s', '--subfields', type=str, help = 'The subfield of the primary field. Please see README.md for all available subfields', nargs='+')
 
-
-# main
 def main():
+    """
+    Main method
+    """
     args = parser.parse_args()
     filename = args.output_file
     field = args.field
     subfields = args.subfields
     data = {}
 
-    # verifies valid output file name
+    # Verifies valid output file name.
     if not filename.endswith('.json'):
         print('Error: invalid output file. Must be a .json')
         sys.exit(0)
 
-    # verifies that field inputs are valid
+    # Verifies that field inputs are valid.
     if field not in SUBFIELDS_IRL_DICT:
-        print('Error: invalid field "%s"' % field)
+        print(f'Error: invalid field "{field}"')
         sys.exit(0)
 
-    # iterates through subfields
+    # Iterates through subfields.
     for sf in subfields:
-        # verifies that subfield inputs are valid
+        # Verifies that subfield inputs are valid.
         if sf not in SUBFIELDS_IRL_DICT[field]:
-            print('Error: invalid subfield "%s".' % sf)
+            print(f'Error: invalid subfield "{sf}".')
             sys.exit(0)
-        # extracts data from API
+        # Extracts data from API.
         else:
-            with consoletimer('RETRIEVING \'%s\' DATA' % sf.upper()):
-                data[sf] = requests.get(url = '%s/%s' % (API_URL, SUBFIELDS_IRL_DICT[field][sf])).json()
+            with consoletimer(f'RETRIEVING \'{sf.upper()}\' DATA'):
+                data[sf] = requests.get(url = f'{API_URL}/{SUBFIELDS_IRL_DICT[field][sf]}').json()
     
-    # outputs JSON to file
-    with consoletimer('WRITING TO OUTPUT FILE \'%s\'' % filename):
+    # Outputs JSON to file.
+    with consoletimer(f'WRITING TO OUTPUT FILE \'{filename}\''):
         f = open(filename, "w+")
         f.write(json.dumps(data, indent=4))
 
-
-# execute
+# Execute the main method.
 if __name__ == '__main__':
     with consoletimer('EXECUTING SCRIPT'):
         main()

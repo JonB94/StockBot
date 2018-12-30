@@ -1,3 +1,7 @@
-# ignores all output files
-*.json
+# Excludes auto-generated folders and files
+__pycache__/
+.vscode/
 *.pyc
+
+# Excludes output files
+*.json
