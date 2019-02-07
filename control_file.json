@@ -1,0 +1,73 @@
+{
+    "companies": ["aapl", "snap"],
+    "fields": {
+        "stocks": {
+            "batch-requests": 1,
+            "book": 1,
+            "chart": 1,
+            "collections": 0,
+            "company": 0,
+            "crypto": 0,
+            "delayed-quote": 0,
+            "dividends": 0,
+            "earnings": 0,
+            "earnings-today": 0,
+            "effective-spread": 0,
+            "financials": 0,
+            "historical-prices": 0,
+            "ipo-calendar": 0,
+            "iex-regulation-sho-threshold-securities-list": 0,
+            "iex-short-interest-list": 0,
+            "key-stats": 0,
+            "largest-trades": 0,
+            "list": 0,
+            "response": 1,
+            "logo": 0,
+            "news": 0,
+            "ohlc": 0,
+            "open-close": 0,
+            "peers": 0,
+            "previous": 0,
+            "price": 0,
+            "quote": 0,
+            "relevant": 0,
+            "sector-performance": 1,
+            "splits": 1,
+            "time-series": 0,
+            "volume-by-volume": 0
+        },
+        "reference": {
+            "symbols": 1,
+            "iex-corporate-actions": 0,
+            "iex-dividends": 0,
+            "iex-next-day-ex-date": 1,
+            "iex-listed-symbol-dictionary": 0
+        },
+        "iexmarket": {
+            "tops": 0,
+            "last": 0,
+            "hist": 1,
+            "deep": 0,
+            "book": 1,
+            "trades": 0,
+            "system-event": 0,
+            "trading-status": 0,
+            "operational-halt-status": 0,
+            "short-sale-price-test-status": 1,
+            "security-event": 0,
+            "trade-break": 0,
+            "auction": 0,
+            "official-price": 0
+        },
+        "iexstats": {
+            "intraday": 0,
+            "recent": 0,
+            "records": 1,
+            "historical-summary": 0,
+            "historical-daily": 0
+        },
+        "markets": {
+            "market": 1
+        }
+    }
+}

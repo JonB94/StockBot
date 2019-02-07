@@ -13,6 +13,7 @@ class ConsoleTimer(object):
         Arguments:
             taskname {str} -- The name or description of the task being performed.
         """
+
         self.taskname = taskname
         self.starttime = time.time()
 
@@ -20,15 +21,17 @@ class ConsoleTimer(object):
         """
         Outputs at the start of the task.
         """
-        print('>> Starting task "%s"...' % self.taskname)
+
+        print(f">> Starting task \"{self.taskname}\"...")
         return self
     
     def __exit__(self, exc_type, exc_val, exc_tb):
         """
         Outputs at the end of the task.
         """
+        
         timetake = time.time() - self.starttime
-        print('<< Finished task "%s" in %s seconds...' % (self.taskname, str(timetake)))
+        print(f"<< Finished task \"{self.taskname}\" in {str(timetake)} seconds...")
 
     def get_timetake(self):
         """Gets the time that a task took.
