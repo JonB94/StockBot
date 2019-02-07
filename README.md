@@ -29,9 +29,8 @@ python -m pip install -r requirements.txt
 ```
 
  Alternatively, you can install the following required libraries individually:
-- [argparse (v. 3.7.2)](https://docs.python.org/3/library/argparse.html) - The argparse module makes it easy to write user-friendly command-line interfaces.
-- [requests (v. 2.21.0)](http://docs.python-requests.org/en/master/) - allows you to send organic, grass-fed HTTP/1.1 requests, without the need for manual labor
-- [tensorflow (v. 1.12.0)](https://www.tensorflow.org/) - An open source machine learning framework for everyone.
+- [requests (v. 2.20.0)](http://docs.python-requests.org/en/master/) - allows you to send organic, grass-fed HTTP/1.1 requests, without the need for manual labor
+- [tensorflow (v. 1.11.0)](https://www.tensorflow.org/) - An open source machine learning framework for everyone.
 
 
 ## Operation

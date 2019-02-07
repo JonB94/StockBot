@@ -127,6 +127,5 @@ def update(company: str, field: str, subfields: list):
     return data
 
 if __name__ == "__main__":
-
     with ConsoleTimer("EXECUTING SCRIPT"):
         main()
