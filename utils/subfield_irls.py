@@ -1,0 +1,70 @@
+SubfieldIRLs = {
+    "stocks": {
+        "batch-requests": "/stock/[COMPANY_NAME]/batch?types=quote,news,chart&range=1m&last=1",
+        "book": "/stock/[COMPANY_NAME]/book",
+        "chart": "/stock/[COMPANY_NAME]/chart",
+        "collections": "/stock/market/collection/sector?collectionName=Health%20Care",
+        "company": "/stock/[COMPANY_NAME]/company",
+        "crypto": "/stock/market/crypto",
+        "delayed-quote": "/stock/[COMPANY_NAME]/delayed-quote",
+        "dividends": "/stock/[COMPANY_NAME]/dividends/5y",
+        "earnings": "/stock/[COMPANY_NAME]/earnings",
+        "earnings-today": "/stock/market/today-earnings",
+        "effective-spread": "/stock/[COMPANY_NAME]/effective-spread",
+        "financials": "/stock/[COMPANY_NAME]/financials",
+        "historical-prices": "/stock/[COMPANY_NAME]/chart",
+        "ipo-calendar": "/stock/market/upcoming-ipos",
+        "iex-regulation-sho-threshold-securities-list": "/stock/market/threshold-securities",
+        "iex-short-interest-list": "/stock/ziext/short-interest",
+        "key-stats": "/stock/[COMPANY_NAME]/stats",
+        "largest-trades": "/stock/[COMPANY_NAME]/largest-trades",
+        "list": "/stock/market/list/mostactive",
+        "response": "/stock/[COMPANY_NAME]/quote",
+        "logo": "/stock/[COMPANY_NAME]/logo",
+        "news": "/stock/[COMPANY_NAME]/news",
+        "ohlc": "/stock/[COMPANY_NAME]/ohlc",
+        "open-close": "/stock/[COMPANY_NAME]/ohlc",
+        "peers": "/stock/[COMPANY_NAME]/peers",
+        "previous": "/stock/[COMPANY_NAME]/previous",
+        "price": "/stock/[COMPANY_NAME]/price",
+        "quote": "/stock/[COMPANY_NAME]/quote",
+        "relevant": "/stock/[COMPANY_NAME]/relevant",
+        "sector-performance": "/stock/market/sector-performance",
+        "splits": "/stock/[COMPANY_NAME]/splits/5y",
+        "time-series": "/stock/[COMPANY_NAME]/time-series",
+        "volume-by-volume": "/stock/[COMPANY_NAME]/volume-by-venue"
+    },
+    "reference": {
+        "symbols": "/ref-data/symbols",
+        "iex-corporate-actions": "/ref-data/daily-list/corporate-actions",
+        "iex-dividends": "/ref-data/daily-list/dividends",
+        "iex-next-day-ex-date": "/ref-data/daily-list/next-day-ex-date",
+        "iex-listed-symbol-dictionary": "/ref-data/daily-list/symbol-directory"
+    },
+    "iexmarket": {
+        "tops": "/tops",
+        "last": "/tops/last",
+        "hist": "/hist?date=20170515",
+        "deep": "/deep?symbols=[COMPANY_NAME]",
+        "book": "/deep/book?symbols=yelp",
+        "trades": "/deep/trades?symbols=[COMPANY_NAME]",
+        "system-event": "/deep/system-event",
+        "trading-status": "/deep/trading-status?symbols=[COMPANY_NAME]",
+        "operational-halt-status": "/deep/op-halt-status?symbols=[COMPANY_NAME]",
+        "short-sale-price-test-status": "/deep/ssr-status?symbols=[COMPANY_NAME]",
+        "security-event": "/deep/security-event?symbols=[COMPANY_NAME]",
+        "trade-break": "/deep/trade-breaks?symbols=[COMPANY_NAME]",
+        "auction": "/deep/auction?symbols=ziext",
+        "official-price": "/deep/official-price?symbols=[COMPANY_NAME]"
+    },
+    "iexstats": {
+        "intraday": "/stats/intraday",
+        "recent": "/stats/recent",
+        "records": "/stats/records",
+        "historical-summary": "/stats/historical",
+        "historical-daily": "/stats/historical/daily"
+    },
+    "markets": {
+        "market": "/market"
+    }
+}
