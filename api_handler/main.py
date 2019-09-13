@@ -2,7 +2,10 @@ import argparse
 import json
 import requests
 import sys
-from utils import ConsoleTimer, Control, SubfieldIRLs
+from StockBot.utils.consoletimer import ConsoleTimer
+from StockBot.utils.control import Control
+from StockBot.utils.subfield_irls import SubfieldIRLs
+
 
 # Constants
 VERSION = 1.0

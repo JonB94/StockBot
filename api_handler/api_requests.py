@@ -3,7 +3,7 @@ import json
 import requests
 import sys
 
-from utils import ConsoleTimer as consoletimer
+from StockBot.utils.consoletimer import ConsoleTimer as consoletimer
 
 # Constants
 VERSION = 1.0
